@@ -1,0 +1,85 @@
+/**
+ * OVERVIEW
+ *
+ * The project is divided into separate style sheets:
+ *
+ * normalize.min.css.....CSS reset, so browsers start from the same state.
+ * base.css..............Global rules and helpers.
+ * layout.css............CSS rules that control the layout of the website.
+ * components.css........The CSS of components that build up the site.
+ */
+
+
+/**
+ * TABLE OF CONTENTS
+ *
+ * SETTINGS
+ * Box-sizing...........The default global settings of our website.
+ * Base font-size.......Declaration of the base font-size.
+ * Margins..............Global values of top and bottom margins.
+ * Anchor...............The default settings of links.
+ *
+ * TYPOGRAPHY
+ * Headings............Typography styles.
+ */
+
+
+
+
+
+/*------------------------------------*\
+  #SETTINGS
+\*------------------------------------*/
+
+/**
+ * 1. A more reasonable box-sizing model.
+ *
+ * 2. This rule changes the value of the base font-size,
+ * to which all rem units are compared.
+ *
+ * 3. The Normalize.css sets a top and a bottom margin for these elements.
+ * That would interfere with our layout so we overwrite it with this rule.
+ *
+ * 4. We give a general bottom-margin to our main typography elements
+ * that ensures that all horizontal margins will be the same
+ * throughout our site by default. Later, we can overwrite this in some cases.
+ */
+
+*    { box-sizing: border-box;} /* [1] */
+
+
+html { font-size:  14px; } /* [2] */
+
+
+h2, h6,
+p,
+ul {
+  margin: 0; /* [3] */
+}
+
+
+h2, h6 {
+  margin-bottom: 1.6666vh; /* [4] */
+}
+
+
+a {
+  text-decoration:  none;
+  cursor:           pointer;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #TYPOGRAPHY
+\*------------------------------------*/
+
+body {
+  color:        #211138;
+  font-family:  'Montserrat', sans-serif;
+}
+
+
+h2 { font-size: 4.4444vh; }

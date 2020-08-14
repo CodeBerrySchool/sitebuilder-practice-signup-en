@@ -1,0 +1,293 @@
+/**
+ * OVERVIEW
+ *
+ * This file describes the components that build up the site.
+ * From the inner layout to the font color, etc.
+ *
+ * You could see it before, but now, BEM-like (Block–Element–Modifier)
+ * thinking is even more apparent in the code. If you are hearing
+ * about BEM for the first time, we recommend reading the following section
+ * in Harry Roberts’s CSS guidelines: https://cssguidelin.es/#bem-like-naming.
+ */
+
+
+/**
+ * TABLE OF CONTENTS
+ *
+ * 1. BUTTONS
+ *
+ * 2. PROMO
+ *
+ * 3. SIGNUP/LOGIN FORM
+ *
+ * 4. FOOTER
+ */
+
+
+
+
+
+/*------------------------------------*\
+  #BUTTONS
+\*------------------------------------*/
+
+/**
+ * 1. We remove the border so it won’t bother us when doing the padding.
+ * Also, it is unnecessary to put borders on a full button. :)
+ *
+ */
+
+.button {
+  display:        inline-block;
+  border:         .2222vh solid;
+  border-radius:  24px;
+  text-align:     center;
+}
+
+  .button--primary-solid {
+    border:           0; /* [1] */
+    background-color: #6200ea;
+    color:            #ffffff;
+  }
+
+  .button--primary-solid:visited { color: #ffffff; }
+
+  .button--primary-hollow {
+    border-color:     #6200ea;
+    background-color: transparent;
+    color:            #6200ea;
+  }
+
+  .button--primary-hollow:visited { color: #6200ea; }
+
+
+
+
+
+/*------------------------------------*\
+  #PROMO
+\*------------------------------------*/
+
+/**
+ * 1. We chose the position property for the layout of the component.
+ * We positioned the logos and blurbs (promo texts and pictograms)
+ * relative to the relative container. If you’d like to read more about
+ * this technique, read our module titled  „Everything in its place”.
+ *
+ * 2. With this method, you can center things easily.
+ * You can find more info about it here:
+ * https://www.w3schools.com/howto/howto_css_center-vertical.asp
+ *
+ * 3. This width declaration is needed to make sure that the text of blurbs
+ * don’t break into a new line by accident. The media query is there
+ * to ensure this on smaller screens as well.
+ *
+ * 4. We make the icons circular using the same series of rulesets
+ * as we did when programming the Contact page.
+ */
+
+.promo {
+  position:         relative; /* [1] */
+  background-color: #6200ea;
+}
+
+  .promo__logo {
+    position: absolute; /* [1] */
+    top:      1.6667vh;
+    left:     1.875vw;
+  }
+
+  .promo__blurb-container {
+    position:  absolute; /* [1] */
+    top:       50%; /* [2] */
+    left:      50%; /* [2] */
+    transform: translate(-50%, -50%); /* [2] */
+    width:     25.6125vw; /* [3] */
+  }
+
+  @media only screen and (max-width: 1365px) {
+    .promo__blurb-container {
+      width: 33vw; /* [3] */
+    }
+  }
+
+  .blurb { margin-bottom: 6.6667vh; }
+
+  .blurb:last-child { margin-bottom: 0; }
+
+    .blurb__icon-wrapper,
+    .blurb__text {
+      display: inline-block;
+    }
+
+    .blurb__icon-wrapper { /* [4] */
+      width:            2.5vw;
+      height:           2.5vw;
+      padding:          .625vw;
+      border-radius:    50%;
+      margin-right:     1.25vw;
+      background-color: #ffffff;
+      text-align:       center;
+    }
+
+      .blurb__icon { /* [4] */
+        color:     #6200ea;
+        font-size: 2.2222vh;
+      }
+
+    .blurb__text {
+      margin:    0;
+      color:     #ffffff;
+      font-size: 3.3333vh;
+    }
+
+
+
+
+
+/*------------------------------------*\
+  #SIGNUP/LOGIN FORM
+\*------------------------------------*/
+
+/**
+ * 1. We’ll solve the problem of centering the card
+ * with the absolute+relative trick here as well.
+ *
+ * 2. This ruleset adds a pseudo element with only one job to the website:
+ * displaying the monochrome background behind the form.
+ *
+ * 3. This width and height declaration is needed to be able to display
+ * the card with the proportions of the original design. In small screens,
+ * we turn off the height.
+ *
+ * 4. Inputs are inline elements by default. Before we start manipulating
+ * the values of margins, paddings, etc., we have to convert them into
+ * block or inline-block elements.
+ *
+ * 5. First, we make the inherent border of the input zero.
+ *
+ * 6. We give the input a bottom border that is invisible by default.
+ * We’ll use that later to make a purple bar appear on focus.
+ * The border is invisible by default so that we only have to change its color,
+ * and so the interface doesn’t jump around as it would if we gave the focus
+ * the border.
+ *
+ * 7. This ruleset formats the submit buttons by adding to the
+ * .button, .button--primary-solid and .button--primary-hollow rules.
+ *
+ */
+
+.signup { position: relative; } /* [1] */
+
+  .signup::before { /* [2] */
+    content:          '';
+    position:         absolute;
+    top:              0;
+    left:             0;
+    width:            100%;
+    height:           100%;
+    background-image: url('../assets/bailey-zindel-396398-unsplash.jpg');
+    background-size:  cover;
+    filter:           grayscale(100%);
+  }
+
+  .signup__form-container {
+    position:         absolute; /* [1] */
+    top:              50%; /* [1] */
+    left:             50%; /* [1] */
+    transform:        translate(-50%, -50%); /* [1] */
+    width:            33.75vw; /* [3] */
+    height:           33.75vw; /* [3] */
+    padding:          6.6667vh 3.75vw 7.2222vh;
+    border-radius:    .9375vw;
+    background-color: #ffffff;
+  }
+
+  @media only screen and (max-width: 1365px) {
+    .signup__form-container {
+      height: auto; /* [3] */
+    }
+  }
+
+    .signup__cta { font-size: 4.4444vh; }
+
+    .signup__input-field {
+      display:          block; /* [4] */
+      width:            100%;
+      padding:          1.7778vh 0 1.4444vh 1.5vw;
+      border:           0; /* [5] */
+      border-bottom:    0.3333vh solid; /* [6] */
+      border-color:     transparent; /* [6] */
+      margin-bottom:    1.6667vh;
+      background-color: #f4f3f5;
+      outline:          none;
+    }
+
+    .signup__input-field:nth-of-type(2) { margin-bottom: 1.1111vh; }
+
+    .signup__input-field:focus { border-bottom-color: #6200ea; }
+
+      .signup__input-field::placeholder {
+        font-weight: bold;
+        opacity:     .25;
+      }
+
+    .signup__forgotten-password-container { text-align: right; }
+
+      .signup__forgotten-password-link         { color: #6200ea; }
+
+      .signup__forgotten-password-link:visited { color: #6200ea; }
+
+    .signup__submit--signup,
+    .signup__submit--login { /* [7] */
+      width:         100%;
+      padding:       2vh 0;
+      margin-bottom: 1.6667vh;
+    }
+
+    .signup__submit--login {
+      padding:        1.7777vh 0;
+      margin-bottom:  0;
+    }
+
+    .signup__forgotten-password-link,
+    .signup__submit--signup,
+    .signup__submit--login { /* [7] */
+      font-size:      1.3333vh;
+      font-weight:    bold;
+      text-transform: uppercase;
+      letter-spacing: .15vw;
+    }
+
+    .signup__cta,
+    .signup__forgotten-password-container {
+      margin-bottom: 3.3333vh;
+    }
+
+
+
+
+
+/*------------------------------------*\
+  #FOOTER
+\*------------------------------------*/
+
+.footer {
+  height:           11.1111vh;
+  padding:          4.7778vh 0;
+  background-color: #211138;
+  text-align:       center;
+}
+
+  .footer__copyright {
+    color:          #b2acba;
+    font-size:      1.3333vh;
+    font-weight:    bold;
+    text-transform: uppercase;
+    letter-spacing: .15vw;
+  }
+
+  .footer__brand-name,
+  .footer__student-name {
+    color: #6200ea;
+  }
